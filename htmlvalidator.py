@@ -24,3 +24,10 @@ except TimeoutException:
     print('Failed to find submit button')
 
 check_btn.click()
+
+
+try: 
+    results = WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.ID,"results"))) 
+except TimeoutException:
+    print('Failed to find results')
+
