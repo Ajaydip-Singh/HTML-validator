@@ -10,6 +10,7 @@ browser.get('https://validator.w3.org/#validate_by_input')
 
 delay = 10
 
+
 try: 
     input_area = WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.ID,"fragment"))) 
 except TimeoutException:
@@ -18,9 +19,8 @@ except TimeoutException:
 input_area.send_keys('Some random text')
 
 try: 
-    check_btn = browser.find_element_by_xpath('//*[@id="validate-by-input"]/form/p[2]/a')
+    check_btn = WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.XPATH, '//*[@id="validate-by-input"]/form/p[2]/a')))
 except TimeoutException:
     print('Failed to find submit button')
-
 
 check_btn.click()
